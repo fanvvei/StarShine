@@ -45,9 +45,10 @@ public class OpenAISettingsState implements PersistentStateComponent<OpenAISetti
   public String imageUrl = "https://cdn.auth0.com/avatars/me.png";
   public String apiKey = "";
   public Map<Integer,String> contentOrder = new HashMap<>(){{
-    put(1, CHATGPT_CONTENT_NAME);
-    put(2, GPT35_TRUBO_CONTENT_NAME);
-    put(3, ONLINE_CHATGPT_CONTENT_NAME);
+    put(2, CHATGPT_CONTENT_NAME);
+    put(3, GPT35_TRUBO_CONTENT_NAME);
+    put(4, ONLINE_CHATGPT_CONTENT_NAME);
+    put(1,STAR_CHAT_CONTENT_NAME);
   }};
 
   public Boolean enableLineWarp = true;

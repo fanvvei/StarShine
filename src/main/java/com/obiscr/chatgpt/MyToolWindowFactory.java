@@ -23,6 +23,7 @@ public class MyToolWindowFactory implements ToolWindowFactory {
     public static final String CHATGPT_CONTENT_NAME = "ChatGPT";
     public static final String GPT35_TRUBO_CONTENT_NAME = "GPT-3.5-Turbo";
     public static final String ONLINE_CHATGPT_CONTENT_NAME = "Online ChatGPT";
+    public static final String STAR_CHAT_CONTENT_NAME = "Star Chat";
 
     /**
      * Create the tool window content.
@@ -50,13 +51,20 @@ public class MyToolWindowFactory implements ToolWindowFactory {
                 ONLINE_CHATGPT_CONTENT_NAME, false);
         browser.setCloseable(false);
 
+        StarChatToolWindow starChatToolWindow = new StarChatToolWindow(project);
+        Content starChat = contentFactory.createContent(starChatToolWindow.getContent(),
+                STAR_CHAT_CONTENT_NAME, false);
+        starChat.setCloseable(false);
+
         OpenAISettingsState settingsState = OpenAISettingsState.getInstance();
         Map<Integer, String> contentSort = settingsState.contentOrder;
 
-        for (int i = 0 ; i <= 2 ; i++) {
-            toolWindow.getContentManager().addContent(getContent(contentSort.get(i + 1),chatGpt,
-                    gpt35Turbo,browser), i);
-        }
+        //并不需要全部加上
+//        for (int i = 0 ; i <= 3 ; i++) {
+//            toolWindow.getContentManager().addContent(getContent(contentSort.get(i + 1),chatGpt,
+//                    gpt35Turbo,browser,starChat), i);
+//        }
+        toolWindow.getContentManager().addContent(starChat,0);
 
 
         // Set the default component. It require the 1st container
@@ -70,6 +78,9 @@ public class MyToolWindowFactory implements ToolWindowFactory {
                 break;
             case ONLINE_CHATGPT_CONTENT_NAME:
                 project.putUserData(ACTIVE_CONTENT, browserToolWindow.getPanel());
+                break;
+                case STAR_CHAT_CONTENT_NAME:
+                project.putUserData(ACTIVE_CONTENT, starChatToolWindow.getPanel());
                 break;
             default:
                 throw new RuntimeException("Error content name, content name must be one of ChatGPT, GPT-3.5-Turbo, Online ChatGPT");
@@ -87,6 +98,8 @@ public class MyToolWindowFactory implements ToolWindowFactory {
                     project.putUserData(ACTIVE_CONTENT,gpt35TurboToolWindow.getPanel());
                 } else if (ONLINE_CHATGPT_CONTENT_NAME.equals(displayName)) {
                     project.putUserData(ACTIVE_CONTENT,browserToolWindow.getPanel());
+                } else if (STAR_CHAT_CONTENT_NAME.equals(displayName)) {
+                    project.putUserData(ACTIVE_CONTENT,starChatToolWindow.getPanel());
                 }
             }
         });
@@ -94,20 +107,22 @@ public class MyToolWindowFactory implements ToolWindowFactory {
         List<AnAction> actionList = new ArrayList<>();
         actionList.add(new HelpAction());
         actionList.add(new SettingAction(ChatGPTBundle.message("action.settings")));
-        actionList.add(new GitHubAction());
-        actionList.add(new PluginAction());
+//        actionList.add(new GitHubAction());
+//        actionList.add(new PluginAction());
         toolWindow.setTitleActions(actionList);
     }
 
     private Content getContent(String key, Content chatgpt ,
                                  Content gpt35Turbo,
-                                 Content browser) {
+                                 Content browser,Content starChat) {
         if (CHATGPT_CONTENT_NAME.equals(key)) {
             return chatgpt;
         } else if (GPT35_TRUBO_CONTENT_NAME.equals(key)) {
             return gpt35Turbo;
         } else if (ONLINE_CHATGPT_CONTENT_NAME.equals(key)) {
             return browser;
+        } else if (STAR_CHAT_CONTENT_NAME.equals(key)) {
+            return starChat;
         }
         return null;
     }
