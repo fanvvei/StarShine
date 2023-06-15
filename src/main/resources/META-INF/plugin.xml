@@ -27,12 +27,16 @@
     <applicationConfigurable parentId="com.obiscr.chatgpt.settings.OpenAISettings" instance="com.obiscr.chatgpt.settings.CustomActionsPanel"
                              id="com.obiscr.chatgpt.settings.commandActions"
                              displayName="Custom Prompt"/>
+    <applicationConfigurable parentId="com.obiscr.chatgpt.settings.OpenAISettings" instance="com.obiscr.chatgpt.settings.StarChatSettingsPanel"
+                             id="com.obiscr.chatgpt.settings.starChat"
+                             displayName="Star Chat"/>
     <applicationService serviceImplementation="com.obiscr.chatgpt.settings.OpenAISettingsState"/>
     <applicationService serviceImplementation="com.obiscr.chatgpt.core.TokenManager"/>
     <projectService serviceImplementation="com.obiscr.chatgpt.core.ConversationManager"/>
     <projectService serviceImplementation="com.obiscr.chatgpt.core.SendAction"/>
     <projectService serviceImplementation="com.obiscr.chatgpt.ChatGPTHandler"/>
     <projectService serviceImplementation="com.obiscr.chatgpt.GPT35TurboHandler"/>
+    <projectService serviceImplementation="com.obiscr.chatgpt.StarChatHandler"/>
     <iconMapper mappingFile="ChatGPTIconMappings.json"/>
   </extensions>
 

@@ -12,7 +12,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.net.Proxy;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static com.obiscr.chatgpt.MyToolWindowFactory.*;
 
@@ -79,6 +82,16 @@ public class OpenAISettingsState implements PersistentStateComponent<OpenAISetti
   public String prompt2Value = "Optimize this code:";
   public String prompt3Name = "My Default";
   public String prompt3Value = "My Default prompt:";
+
+  public String starSystemPrompt = "Below is a conversation between a human user and a helpful AI coding assistant.";
+  public String starUrl = "http://122.178.8.121:7860/json-stream";
+  public String starLen = "2048";
+  public String starStep = "32";
+  public String starTemperature = "0.2";
+  public String starTopP = "0.95";
+  public String starTopK = "50";
+  public String starRepetitionPenalty = "0.8";
+
 
   @Tag("customPrompts")
   public Map<String, String> customPrompts = new HashMap<>();

@@ -52,12 +52,7 @@ public class MessageComponent extends JBPanel<MessageComponent> {
             JPanel iconPanel = new JPanel(new BorderLayout());
             iconPanel.setOpaque(false);
             Image imageIcon;
-            try {
-                String url = OpenAISettingsState.getInstance().imageUrl;
-                imageIcon = me ? ImgUtils.getImage(new URL(url)) : ImgUtils.iconToImage(ChatGPTIcons.OPEN_AI);
-            } catch (Exception e) {
-                imageIcon = me ? ImgUtils.iconToImage(ChatGPTIcons.ME) : ImgUtils.iconToImage(ChatGPTIcons.AI);
-            }
+            imageIcon = me ? ImgUtils.iconToImage(ChatGPTIcons.ME) : ImgUtils.iconToImage(ChatGPTIcons.AI);
             Image scale = ImgUtil.scale(imageIcon, 30, 30);
             iconPanel.add(new JBLabel(new ImageIcon(scale)), BorderLayout.NORTH);
             add(iconPanel, BorderLayout.WEST);

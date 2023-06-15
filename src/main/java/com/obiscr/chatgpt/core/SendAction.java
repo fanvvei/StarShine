@@ -8,6 +8,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.project.Project;
 import com.obiscr.chatgpt.ChatGPTHandler;
 import com.obiscr.chatgpt.GPT35TurboHandler;
+import com.obiscr.chatgpt.StarChatHandler;
 import com.obiscr.chatgpt.message.ChatGPTBundle;
 import com.obiscr.chatgpt.settings.OpenAISettingsState;
 import com.obiscr.chatgpt.settings.SettingConfiguration;
@@ -89,9 +90,9 @@ public class SendAction extends AnAction {
         }
 
         // Check the configuration first
-        if (!presetCheck(mainPanel.isChatGPTModel())) {
-            return;
-        }
+//        if (!presetCheck(mainPanel.isChatGPTModel())) {
+//            return;
+//        }
 
         // Reset the question container
         mainPanel.getSearchTextArea().getTextArea().setText("");
@@ -117,13 +118,23 @@ public class SendAction extends AnAction {
                     contentPanel.scrollToBottom();
                 });
             } else {
-                ChatGPTHandler chatGPTHandler = project.getService(ChatGPTHandler.class);
+
+                //暂时使用starchat来替换这部分了：
+                StarChatHandler starChatHandler = project.getService(StarChatHandler.class);
                 executorService.submit(() -> {
-                    EventSource handle = chatGPTHandler.handle(mainPanel, answer, data);
+                    Call handle = starChatHandler.handle(mainPanel, answer, data);
                     mainPanel.setRequestHolder(handle);
                     contentPanel.updateLayout();
                     contentPanel.scrollToBottom();
                 });
+
+//                ChatGPTHandler chatGPTHandler = project.getService(ChatGPTHandler.class);
+//                executorService.submit(() -> {
+//                    EventSource handle = chatGPTHandler.handle(mainPanel, answer, data);
+//                    mainPanel.setRequestHolder(handle);
+//                    contentPanel.updateLayout();
+//                    contentPanel.scrollToBottom();
+//                });
             }
         } catch (Exception e) {
             answer.setSourceContent(e.getMessage());

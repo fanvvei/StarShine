@@ -99,6 +99,15 @@ public class OfficialParser {
         return parseResult;
     }
 
+    public static ParseResult parseStarCoderWithStream(String response) {
+        JsonObject object = JsonParser.parseString(response).getAsJsonObject();
+        String content = object.get("content").getAsString();
+        ParseResult parseResult = new ParseResult();
+        parseResult.source = content;
+        parseResult.html = HtmlUtil.md2html(content);
+        return parseResult;
+    }
+
     public static class ParseResult {
         private String source;
         private String html;
