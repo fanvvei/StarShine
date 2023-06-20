@@ -13,7 +13,6 @@ import javax.swing.*;
  * @since 2023/6/14 8:55
  */
 public class StarChatSettingsPanel implements Configurable, Disposable {
-    private JPanel myPanel;
     private JTextField optionSystemPrompt;
     private JTextField optionURL;
     private JTextField optionMaxNewTokens;
@@ -22,6 +21,7 @@ public class StarChatSettingsPanel implements Configurable, Disposable {
     private JTextField optionsTopK;
     private JTextField optionsTopP;
     private JTextField optionsRepetitionPenalty;
+    private JPanel mainPanel;
 
     public StarChatSettingsPanel(){
     }
@@ -51,7 +51,7 @@ public class StarChatSettingsPanel implements Configurable, Disposable {
 
     @Override
     public @Nullable JComponent createComponent() {
-        return myPanel;
+        return mainPanel;
     }
 
     @Override

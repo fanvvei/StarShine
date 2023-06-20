@@ -40,7 +40,7 @@ public class MessageGroupComponent extends JBPanel<MessageGroupComponent> implem
     private final MessageComponent gpt35TurboModelExplanation =
             new MessageComponent(Constant.getGpt35TurboContent(),false);
     private final MessageComponent tips =
-            new MessageComponent("Type anything to ask me.",false);
+            new MessageComponent("Type anything to ask me!",false);
     private final MessageComponent mustRead =
             new MessageComponent("Must Read: <a href='https://chatgpt.en.obiscr.com/getting-started/'>https://chatgpt.en.obiscr.com/getting-started/</a><br />&#20351;&#29992;&#24517;&#35835;: <a href='https://chatgpt.cn.obiscr.com/getting-started/'>https://chatgpt.cn.obiscr.com/getting-started/</a>",false);
     private JBTextField systemRole;
@@ -116,7 +116,7 @@ public class MessageGroupComponent extends JBPanel<MessageGroupComponent> implem
                 super.mouseClicked(e);
                 myList.removeAll();
                 myList.add(tips);
-                myList.add(mustRead);
+//                myList.add(mustRead);
                 myList.updateUI();
                 if (isChatGPT) {
                     ConversationManager.getInstance(project).setConversationId(null);
@@ -150,13 +150,13 @@ public class MessageGroupComponent extends JBPanel<MessageGroupComponent> implem
         });
 
         // Add the default message
-        if (isChatGPT) {
-            add(chatGPTExplanation);
-        } else {
-            add(gpt35TurboModelExplanation);
-        }
+//        if (isChatGPT) {
+//            add(chatGPTExplanation);
+//        } else {
+//            add(gpt35TurboModelExplanation);
+//        }
         add(tips);
-        add(mustRead);
+//        add(mustRead);
     }
 
     public void add(MessageComponent messageComponent) {

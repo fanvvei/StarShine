@@ -36,7 +36,7 @@ public class StarChatHandler extends AbstractHandler {
 
         Map<String, Object> map = new HashMap<>();
         map.put("question", question);
-        map.put("text", "<|system|>"+instance.starSystemPrompt+"<|end|>\\n<|user|>"+question+"<|end|>\\n<|assistant|>");
+        map.put("text", "<|system|>\\n"+instance.starSystemPrompt+"<|end|>\\n<|user|>\\n"+question+"<|end|>\\n<|assistant|>");
         map.put("len", instance.starLen);
         map.put("step", instance.starStep);
         map.put("system_prompt", instance.starSystemPrompt);

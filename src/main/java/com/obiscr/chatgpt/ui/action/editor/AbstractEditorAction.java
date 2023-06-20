@@ -25,6 +25,7 @@ public abstract class AbstractEditorAction extends AnAction {
 
     protected String text = "";
     protected String key = "";
+    public static final String toolWindowId = "人工智能研发助手";
 
     public AbstractEditorAction(@NotNull Supplier<@NlsActions.ActionText String> dynamicText) {
         super(dynamicText);
@@ -38,7 +39,7 @@ public abstract class AbstractEditorAction extends AnAction {
     public void doActionPerformed(@NotNull AnActionEvent e) {
 
         // Check the toolWindow is active
-        ToolWindow chatGPT = ToolWindowManager.getInstance(e.getProject()).getToolWindow("ChatGPT");
+        ToolWindow chatGPT = ToolWindowManager.getInstance(e.getProject()).getToolWindow(toolWindowId);
         assert chatGPT != null;
         if (!chatGPT.isActive()) {
             chatGPT.activate(null);

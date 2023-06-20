@@ -23,7 +23,7 @@ public class MyToolWindowFactory implements ToolWindowFactory {
     public static final String CHATGPT_CONTENT_NAME = "ChatGPT";
     public static final String GPT35_TRUBO_CONTENT_NAME = "GPT-3.5-Turbo";
     public static final String ONLINE_CHATGPT_CONTENT_NAME = "Online ChatGPT";
-    public static final String STAR_CHAT_CONTENT_NAME = "Star Chat";
+    public static final String STAR_CHAT_CONTENT_NAME = "Star Coder";
 
     /**
      * Create the tool window content.
@@ -65,7 +65,6 @@ public class MyToolWindowFactory implements ToolWindowFactory {
 //                    gpt35Turbo,browser,starChat), i);
 //        }
         toolWindow.getContentManager().addContent(starChat,0);
-
 
         // Set the default component. It require the 1st container
         String firstContentName = contentSort.get(1);

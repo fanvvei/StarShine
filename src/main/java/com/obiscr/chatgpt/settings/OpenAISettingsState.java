@@ -8,6 +8,7 @@ import com.intellij.openapi.components.Storage;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.intellij.util.xmlb.annotations.Tag;
 import com.obiscr.OpenAIProxy;
+import org.apache.groovy.util.Maps;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -76,12 +77,12 @@ public class OpenAISettingsState implements PersistentStateComponent<OpenAISetti
 
   public String gpt35RoleText = "You are a helpful language assistant";
 
-  public String prompt1Name = "Find Bug";
-  public String prompt1Value = "Find the bug in the code below:";
-  public String prompt2Name = "Optimize Code";
-  public String prompt2Value = "Optimize this code:";
-  public String prompt3Name = "My Default";
-  public String prompt3Value = "My Default prompt:";
+  public String prompt1Name = "Generate unit tests";
+  public String prompt1Value = "Generate unit test case for this code:";
+  public String prompt2Name = "Generate Comment";
+  public String prompt2Value = "Add line-level comments for this code:";
+  public String prompt3Name = "Find Bug";
+  public String prompt3Value = "Find the bug in the code below:";
 
   public String starSystemPrompt = "Below is a conversation between a human user and a helpful AI coding assistant.";
   public String starUrl = "http://122.178.8.121:7860/json-stream";
@@ -95,6 +96,16 @@ public class OpenAISettingsState implements PersistentStateComponent<OpenAISetti
 
   @Tag("customPrompts")
   public Map<String, String> customPrompts = new HashMap<>();
+//  public Map<String, String> customPrompts = Maps.of(
+//          "Explain","Explain this code",
+//          "Optimize Code","Optimize this code",
+//          "Translate into Python","Translate the following code into Python");
+
+//  {
+//    customPrompts.put("Explain","Explain this code");
+//    customPrompts.put("Optimize Code","Optimize this code");
+//    customPrompts.put("Translate into Python","Translate the following code into Python");
+//  }
 
   public static OpenAISettingsState getInstance() {
     return ApplicationManager.getApplication().getService(OpenAISettingsState.class);

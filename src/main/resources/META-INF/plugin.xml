@@ -1,7 +1,7 @@
 <idea-plugin>
-  <id>ChatGPT</id>
-  <name>ChatGPT</name>
-  <vendor email="wuzi@obiscr.com" url="https://obiscr.com">obiscr</vendor>
+  <id>StarShine</id>
+  <name>人工智能研发助手</name>
+  <vendor email="1085255376@qq.com.com" url="">vizz</vendor>
 
   <depends>com.intellij.modules.platform</depends>
   <depends>org.intellij.plugins.markdown</depends>
@@ -10,26 +10,26 @@
   <!--<depends>com.intellij.modules.platform</depends>-->
 
   <extensions defaultExtensionNs="com.intellij">
-    <toolWindow id="ChatGPT" anchor="right" icon="/icons/toolWindow.svg" canCloseContents="true"
+    <toolWindow id="人工智能研发助手"  anchor="right" icon="/icons/toolWindow.svg" canCloseContents="true"
                 factoryClass="com.obiscr.chatgpt.MyToolWindowFactory"/>
     <applicationConfigurable parentId="tools" instance="com.obiscr.chatgpt.settings.OpenAISettingsPanel"
                              id="com.obiscr.chatgpt.settings.OpenAISettings"
-                             displayName="OpenAI"/>
+                             displayName="研发助手设置"/>
 <!--    <groupConfigurable id="com.obiscr.chatgpt.settings.OpenAISettings" weight="-10"-->
 <!--                       displayNameKey="OpenAI"-->
 <!--                       descriptionKey="Here are the relevant settings for OpenAI"/>-->
-    <applicationConfigurable parentId="com.obiscr.chatgpt.settings.OpenAISettings" instance="com.obiscr.chatgpt.settings.ChatGPTSettingsPanel"
-                             id="com.obiscr.chatgpt.settings.ChatGPT"
-                             displayName="ChatGPT"/>
-    <applicationConfigurable parentId="com.obiscr.chatgpt.settings.OpenAISettings" instance="com.obiscr.chatgpt.settings.GPT3_35_TurboPanel"
-                             id="com.obiscr.chatgpt.settings.GPT3-3.5-Turbo"
-                             displayName="GPT 3.5 Turbo"/>
+<!--    <applicationConfigurable parentId="com.obiscr.chatgpt.settings.OpenAISettings" instance="com.obiscr.chatgpt.settings.ChatGPTSettingsPanel"-->
+<!--                             id="com.obiscr.chatgpt.settings.ChatGPT"-->
+<!--                             displayName="ChatGPT"/>-->
+<!--    <applicationConfigurable parentId="com.obiscr.chatgpt.settings.OpenAISettings" instance="com.obiscr.chatgpt.settings.GPT3_35_TurboPanel"-->
+<!--                             id="com.obiscr.chatgpt.settings.GPT3-3.5-Turbo"-->
+<!--                             displayName="GPT 3.5 Turbo"/>-->
     <applicationConfigurable parentId="com.obiscr.chatgpt.settings.OpenAISettings" instance="com.obiscr.chatgpt.settings.CustomActionsPanel"
                              id="com.obiscr.chatgpt.settings.commandActions"
                              displayName="Custom Prompt"/>
     <applicationConfigurable parentId="com.obiscr.chatgpt.settings.OpenAISettings" instance="com.obiscr.chatgpt.settings.StarChatSettingsPanel"
                              id="com.obiscr.chatgpt.settings.starChat"
-                             displayName="Star Chat"/>
+                             displayName="Star Coder"/>
     <applicationService serviceImplementation="com.obiscr.chatgpt.settings.OpenAISettingsState"/>
     <applicationService serviceImplementation="com.obiscr.chatgpt.core.TokenManager"/>
     <projectService serviceImplementation="com.obiscr.chatgpt.core.ConversationManager"/>
