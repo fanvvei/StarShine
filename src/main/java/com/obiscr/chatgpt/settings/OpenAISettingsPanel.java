@@ -76,6 +76,8 @@ public class OpenAISettingsPanel implements Configurable, Disposable {
     private ExpandableTextField prompt1ValueField;
     private ExpandableTextField prompt3ValueField;
     private ExpandableTextField prompt2ValueField;
+    private JPanel api_key_panel;
+    private JPanel content_order_panel;
     private final String[] comboboxItemsString = {
             CHATGPT_CONTENT_NAME,
             GPT35_TRUBO_CONTENT_NAME,
@@ -90,6 +92,11 @@ public class OpenAISettingsPanel implements Configurable, Disposable {
     }
 
     private void init() {
+        api_key_panel.setVisible(false);
+        content_order_panel.setVisible(false);
+        openaiAssistantTitledBorderBox.setVisible(false);
+        contentTitledBorderBox.setVisible(false);
+
         register(proxyDirectChoice, SettingConfiguration.SettingProxyType.DIRECT);
         register(proxyHttpChoice, SettingConfiguration.SettingProxyType.HTTP);
         register(proxySocksChoice, SettingConfiguration.SettingProxyType.SOCKS);
@@ -278,13 +285,13 @@ public class OpenAISettingsPanel implements Configurable, Disposable {
         strings.add(secondSelected);
         strings.add(thirdSelected);
         List<String> collect = strings.stream().distinct().collect(Collectors.toList());
-        if (collect.size() != strings.size()) {
-            MessageDialogBuilder.yesNo("Duplicate Content exists!", "The content of " +
-                            "each position must be unique, please re-adjust the order")
-                    .yesText("Ok")
-                    .noText("Close").ask(myMainPanel);
-            return;
-        }
+//        if (collect.size() != strings.size()) {
+//            MessageDialogBuilder.yesNo("Duplicate Content exists!", "The content of " +
+//                            "each position must be unique, please re-adjust the order")
+//                    .yesText("Ok")
+//                    .noText("Close").ask(myMainPanel);
+//            return;
+//        }
 
         state.contentOrder.put(1, firstSelected);
         state.contentOrder.put(2, secondSelected);
@@ -293,16 +300,16 @@ public class OpenAISettingsPanel implements Configurable, Disposable {
         state.enableLineWarp = enableLineWarpCheckBox.isSelected();
         state.assistantApiKey = assistantApiKey.getText();
 
-        if (needRestart) {
-            boolean yes = MessageDialogBuilder.yesNo("Content order changed!", "Changing " +
-                            "the content order requires restarting the IDE to take effect. Do you " +
-                            "want to restart to apply the settings?")
-                    .yesText("Restart")
-                    .noText("Not Now").ask(myMainPanel);
-            if (yes) {
-                ApplicationManagerEx.getApplicationEx().restart(true);
-            }
-        }
+//        if (needRestart) {
+//            boolean yes = MessageDialogBuilder.yesNo("Content order changed!", "Changing " +
+//                            "the content order requires restarting the IDE to take effect. Do you " +
+//                            "want to restart to apply the settings?")
+//                    .yesText("Restart")
+//                    .noText("Not Now").ask(myMainPanel);
+//            if (yes) {
+//                ApplicationManagerEx.getApplicationEx().restart(true);
+//            }
+//        }
     }
 
     @Override

@@ -101,11 +101,11 @@ public class OpenAISettingsState implements PersistentStateComponent<OpenAISetti
 //          "Optimize Code","Optimize this code",
 //          "Translate into Python","Translate the following code into Python");
 
-//  {
-//    customPrompts.put("Explain","Explain this code");
-//    customPrompts.put("Optimize Code","Optimize this code");
-//    customPrompts.put("Translate into Python","Translate the following code into Python");
-//  }
+  {
+    customPrompts.put("Explain","Explain this code");
+    customPrompts.put("Optimize Code","Optimize this code");
+    customPrompts.put("Translate into Python","Translate the following code into Python");
+  }
 
   public static OpenAISettingsState getInstance() {
     return ApplicationManager.getApplication().getService(OpenAISettingsState.class);
