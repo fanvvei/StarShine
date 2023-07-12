@@ -13,6 +13,7 @@ import javax.swing.*;
  * @since 2023/6/14 8:55
  */
 public class StarChatSettingsPanel implements Configurable, Disposable {
+    private JTextArea optionPromptTmpl;
     private JTextField optionSystemPrompt;
     private JTextField optionURL;
     private JTextField optionMaxNewTokens;
@@ -29,6 +30,7 @@ public class StarChatSettingsPanel implements Configurable, Disposable {
     @Override
     public void reset() {
         OpenAISettingsState state = OpenAISettingsState.getInstance();
+        optionPromptTmpl.setText(state.starPromptTmpl);
         optionSystemPrompt.setText(state.starSystemPrompt);
         optionURL.setText(state.starUrl);
         optionMaxNewTokens.setText(state.starLen);
@@ -64,7 +66,8 @@ public class StarChatSettingsPanel implements Configurable, Disposable {
                 || !state.starTopK.equals(optionsTopK.getText())
                 || !state.starTopP.equals(optionsTopP.getText())
                 || !state.starRepetitionPenalty.equals(optionsRepetitionPenalty.getText())
-                || !state.starSystemPrompt.equals(optionSystemPrompt.getText());
+                || !state.starSystemPrompt.equals(optionSystemPrompt.getText())
+                || !state.starPromptTmpl.equals(optionPromptTmpl.getText());
     }
 
     @Override
@@ -78,5 +81,6 @@ public class StarChatSettingsPanel implements Configurable, Disposable {
         state.starTopP = optionsTopP.getText();
         state.starRepetitionPenalty = optionsRepetitionPenalty.getText();
         state.starSystemPrompt = optionSystemPrompt.getText();
+        state.starPromptTmpl = optionPromptTmpl.getText();
     }
 }

@@ -36,7 +36,8 @@ public class StarChatHandler extends AbstractHandler {
 
         Map<String, Object> map = new HashMap<>();
         map.put("question", question);
-        map.put("text", "<|system|>\\n"+instance.starSystemPrompt+"<|end|>\\n<|user|>\\n"+question+"<|end|>\\n<|assistant|>");
+        String finalPrompt = instance.starPromptTmpl.replace("${system}", instance.starSystemPrompt).replace("${user}", question);
+        map.put("text", finalPrompt);
         map.put("len", instance.starLen);
         map.put("step", instance.starStep);
         map.put("system_prompt", instance.starSystemPrompt);
@@ -129,7 +130,7 @@ public class StarChatHandler extends AbstractHandler {
                         component.scrollToBottom();
                         System.out.println(line);
                     }
-                        mainPanel.aroundRequest(false);
+                    mainPanel.aroundRequest(false);
                     source.close();
 
                 }

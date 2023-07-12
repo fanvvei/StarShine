@@ -77,16 +77,21 @@ public class OpenAISettingsState implements PersistentStateComponent<OpenAISetti
 
   public String gpt35RoleText = "You are a helpful language assistant";
 
-  public String prompt1Name = "Generate unit tests";
-  public String prompt1Value = "Generate unit test case for this code:";
-  public String prompt2Name = "Generate Comment";
-  public String prompt2Value = "Add line-level comments for this code:";
-  public String prompt3Name = "Find Bug";
-  public String prompt3Value = "Find the bug in the code below:";
+  public String prompt1Name = "单元测试";
+  public String prompt1Value = "为以下java代码生成单元测试：";
+  public String prompt2Name = "代码解释";
+  public String prompt2Value = "解释这段代码：";
+  public String prompt3Name = "BUG检测";
+  public String prompt3Value = "寻找以下代码的BUG：";
 
-  public String starSystemPrompt = "Below is a conversation between a human user and a helpful AI coding assistant.";
-  public String starUrl = "http://122.178.8.121:7860/json-stream";
-  public String starLen = "2048";
+  public static final String STAR_CHAT_BETA_PROMPT_TMPL="<|system|>\\n${system}<|end|>\\n<|user|>\\n${user}<|end|>\\n<|assistant|>";
+  public static final String WIZARD_PROMPT_TMPL="${system}\\n\\n### Instruction:\\n${user}\\n\\n### Response:";
+  public static final String STAR_CHAT_BETA_SYSTEM_PROMPT="Below is a conversation between a human user and a helpful AI coding assistant.";
+  public static final String WIZARD_SYSTEM_PROMPT="Below is an instruction that describes a task. Write a response that appropriately completes the request.";
+  public String starPromptTmpl = WIZARD_PROMPT_TMPL;
+  public String starSystemPrompt = WIZARD_SYSTEM_PROMPT;
+  public String starUrl = "http://122.178.8.121:1111/json-stream";
+  public String starLen = "3072";
   public String starStep = "32";
   public String starTemperature = "0.2";
   public String starTopP = "0.95";
@@ -102,9 +107,14 @@ public class OpenAISettingsState implements PersistentStateComponent<OpenAISetti
 //          "Translate into Python","Translate the following code into Python");
 
   {
+    customPrompts.put("Generate unit tests","Generate unit test case for this code");
+    customPrompts.put("Generate Comment","Add line-level comments for this code");
+    customPrompts.put("Find Bug","Find the bug in the code below");
     customPrompts.put("Explain","Explain this code");
     customPrompts.put("Optimize Code","Optimize this code");
     customPrompts.put("Translate into Python","Translate the following code into Python");
+    customPrompts.put("注释生成","为以下java代码增加行级注释");
+    customPrompts.put("代码优化","优化以下代码");
   }
 
   public static OpenAISettingsState getInstance() {
