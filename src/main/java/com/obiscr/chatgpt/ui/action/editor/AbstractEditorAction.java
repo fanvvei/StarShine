@@ -25,7 +25,7 @@ public abstract class AbstractEditorAction extends AnAction {
 
     protected String text = "";
     protected String key = "";
-    public static final String toolWindowId = "人工智能研发助手";
+    public static final String toolWindowId = "CTP-Labs";
 
     public AbstractEditorAction(@NotNull Supplier<@NlsActions.ActionText String> dynamicText) {
         super(dynamicText);

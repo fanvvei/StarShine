@@ -1,6 +1,6 @@
 <idea-plugin>
-  <id>StarShine</id>
-  <name>人工智能研发助手</name>
+  <id>CTP-Labs</id>
+  <name>CTP-Labs</name>
   <vendor email="1085255376@qq.com.com" url="">vizz</vendor>
 
   <depends>com.intellij.modules.platform</depends>
@@ -10,7 +10,7 @@
   <!--<depends>com.intellij.modules.platform</depends>-->
 
   <extensions defaultExtensionNs="com.intellij">
-    <toolWindow id="人工智能研发助手"  anchor="right" icon="/icons/toolWindow.svg" canCloseContents="true"
+    <toolWindow id="CTP-Labs"  anchor="right" icon="/icons/toolWindow.svg" canCloseContents="true"
                 factoryClass="com.obiscr.chatgpt.MyToolWindowFactory"/>
       <applicationConfigurable parentId="tools" instance="com.obiscr.chatgpt.settings.OpenAISettingsPanel"
                              id="com.obiscr.chatgpt.settings.OpenAISettings"
@@ -53,7 +53,7 @@
         <keyboard-shortcut keymap="$default" first-keystroke="control shift Q"/>
       </action>
       <separator/>
-      <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+      <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="$Paste"/>
       <separator/>
     </group>
   </actions>

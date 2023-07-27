@@ -24,7 +24,7 @@ public class CustomAction extends AbstractEditorAction {
     public static final Key ACTIVE_FILE_TYPE = Key.create("ActiveFileType");
 
     public CustomAction() {
-        super(() -> ChatGPTBundle.message("action.code.custom.action"));
+        super(() -> "自定义提示词");
     }
 
     @Override
